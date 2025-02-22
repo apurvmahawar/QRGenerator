@@ -17,7 +17,7 @@ public class QRController {
     @Autowired
     private QRGeneratorService qrGeneratorService;
 
-    @PostMapping("/")
+    @PostMapping()
     @Operation(summary = "QR Generator", description = "Create QR Code for provided data string")
     public boolean generateQRCode(@RequestBody QRRequestDto request) {
         return qrGeneratorService.generateQR(request.data(), request.height(), request.width());
