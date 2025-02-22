@@ -17,10 +17,10 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class QRGeneratorService {
 
-    public boolean generateQR(String data) {
+    public boolean generateQR(String data, int height, int width) {
         try {
             QRCodeWriter qrCodeWriter = new QRCodeWriter();
-            BitMatrix matrix = qrCodeWriter.encode(data, BarcodeFormat.QR_CODE, 1000, 1000);
+            BitMatrix matrix = qrCodeWriter.encode(data, BarcodeFormat.QR_CODE, width, height);
             BufferedImage image = MatrixToImageWriter.toBufferedImage(matrix);
             saveImage(image);
             return true;
